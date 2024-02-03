@@ -26,6 +26,12 @@ import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.widget.Toolbar;
+
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.SpannedString;
 import android.view.View;
 
 /**
@@ -43,6 +49,10 @@ public class TapTarget {
   final CharSequence title;
   @Nullable
   final CharSequence description;
+  @Nullable
+  SpannableString descriptionSpannableString;
+  @Nullable
+  Spanned descriptionSpanned;
 
   float outerCircleAlpha = 0.96f;
   int targetRadius = 44;
@@ -195,6 +205,15 @@ public class TapTarget {
   }
 
   protected TapTarget(CharSequence title, @Nullable CharSequence description) {
+    if (title == null) {
+      throw new IllegalArgumentException("Cannot pass null title");
+    }
+
+    this.title = title;
+    this.description = description;
+  }
+
+  protected TapTarget(CharSequence title, @Nullable SpannableString description) {
     if (title == null) {
       throw new IllegalArgumentException("Cannot pass null title");
     }

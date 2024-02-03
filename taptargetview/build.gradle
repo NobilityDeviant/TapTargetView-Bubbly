@@ -40,7 +40,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.NobilityDeviant'
             artifactId = 'TapTargetView-Bubbly'
-            version = '0.9'
+            version = '0.9.1'
 
             afterEvaluate {
                 from components.release
